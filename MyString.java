@@ -80,7 +80,7 @@ public class MyString {
      */
     public static String spacedString(String str) {
         String spacestr = "";
-        for (int i = 0; i > str.length();i++){
+        for (int i = 0; i < str.length();i++){
             char c = str.charAt(i);
             if(i == str.length()-1){
                 spacestr = spacestr + c;  
@@ -89,7 +89,7 @@ public class MyString {
         }
 
         }
-        
+       
         return spacestr;
     }
   
