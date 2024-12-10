@@ -20,8 +20,16 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        int count = 0;
+        for (int i = 0; i < str.length(); i++){
+            char a = str.charAt(i);
+            if(a==ch){
+                count++;
+            }
+        }       
+
+        
+        return count;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -36,9 +44,31 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-         //// Replace the following statement with your code
-        return false;
+        if (str1.length() > str2.length()) {
+            return false;
+        }
+        if (str1.length()== 0) {
+            return true;
+            
+        }       
+        
+        for (int i = 0; i < str1.length(); i++ ){
+            char ch = str1.charAt(i);
+            int countInStr1 = countChar(str1, ch);
+            int countInStr2 = countChar(str2, ch);
+            if (countInStr1 > countInStr2) {
+                return false;
+            }
+
+               
+        }                      
+         return true;
     }
+         
+         
+        
+        
+    
 
     /** Returns a string which is the same as the given string, with a space
      * character inserted after each character in the given string, except
@@ -49,8 +79,18 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        //// Replace the following statement with your code
-        return null;
+        String spacestr = "";
+        for (int i = 0; i > str.length();i++){
+            char c = str.charAt(i);
+            if(i == str.length()-1){
+                spacestr = spacestr + c;  
+            }else{
+            spacestr = spacestr + c + " ";
+        }
+
+        }
+        
+        return spacestr;
     }
   
     /**
@@ -64,8 +104,15 @@ public class MyString {
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
     public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
+        String abc = "abcdefghijklmnopqrstuvwxyz";
+        String randomstr = "";
+        for (int i=0; i<n; i++){
+            double random = Math.random();
+            int randoindex = (int) (random * 26); 
+            char c = abc.charAt(randoindex);
+            randomstr +=c;
+        }
+        return randomstr;
     }
 
     /**
@@ -78,8 +125,26 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+        String newstr = "";
+       for (int i= 0; i< str1.length(); i++){
+        char c = str1.charAt(i);
+        String Cstr ="";
+         Cstr += c;
+        if (!subsetOf(Cstr, str2)) {
+            newstr += c; 
+        }
+        if (subsetOf(Cstr, str2)&&countChar(str1, c) > countChar(str2, c)){
+            while (countChar(newstr, c) < countChar(str2, c)) {
+                newstr += c;
+                
+            }
+
+        }
+
+           
+       }
+       
+        return newstr;
     }
 
     /**
